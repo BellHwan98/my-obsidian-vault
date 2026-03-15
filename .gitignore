@@ -1,0 +1,50 @@
+# Obsidian workspace (개인 UI 상태, 기기마다 다름)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Obsidian plugin runtime data
+.obsidian/plugins/*/data.json
+.obsidian/plugins/recent-files-obsidian/
+.obsidian/plugins/obsidian-plugin-update-tracker/
+
+# Obsidian cache
+.obsidian/cache
+
+# Smart Environment (임베딩 캐시, 기기별 생성)
+.smart-env/
+
+# MakeMarkdown cache
+.makemd/
+
+# Space metadata
+.space/
+
+# macOS
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# iCloud sync conflicts
+*.icloud
+
+# Node modules (IELTS PWA 등 하위 프로젝트)
+node_modules/
+
+# Large attachments (Git LFS 또는 별도 관리 권장)
+# Files/ 폴더 내 대용량 바이너리
+*.heic
+*.HEIC
+
+# R 관련
+.Rhistory
+.RData
+
+# Legacy 폴더 (iCloud 미동기화 파일로 인해 임시 제외, 추후 마이그레이션 후 제거)
+1. Project_마감필요/
+2. Area_지속 관리/
+3. Resource_언제가 필요함/
+4. Archieve_완료 및 저장/
+<Inbox>/
+Clippings/
+Files/
+자료/

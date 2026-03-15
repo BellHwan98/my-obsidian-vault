@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "type": "graph",
+      "ctime": 1732550046581,
+      "title": "Untitled Graph",
+      "options": {
+        "collapse-filter": false,
+        "search": "",
+        "showTags": true,
+        "showAttachments": false,
+        "hideUnresolved": false,
+        "showOrphans": true,
+        "collapse-color-groups": false,
+        "colorGroups": [],
+        "collapse-display": false,
+        "showArrow": true,
+        "textFadeMultiplier": 0,
+        "nodeSizeMultiplier": 1,
+        "lineSizeMultiplier": 1,
+        "collapse-forces": false,
+        "centerStrength": 0.0673840445269017,
+        "repelStrength": 10,
+        "linkStrength": 1,
+        "linkDistance": 250,
+        "scale": 0.37661269741830566,
+        "close": true
+      }
+    },
+    {
+      "type": "file",
+      "ctime": 1768316641502,
+      "path": "4. Archieve_완료 및 저장/2026년 신년 계획/2026년 신년 일정.md"
+    },
+    {
+      "type": "file",
+      "ctime": 1769072627908,
+      "path": "2. Area_지속 관리/English/아이엘츠 Writing/템플릿/Version.2/ILETS Writing Templates.md"
+    },
+    {
+      "type": "file",
+      "ctime": 1769073005710,
+      "path": "2. Area_지속 관리/English/영어 회화/영어 회화 패턴.md"
+    }
+  ]
+}

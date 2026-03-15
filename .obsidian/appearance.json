@@ -1,0 +1,10 @@
+{
+  "cssTheme": "Obsidianite",
+  "enabledCssSnippets": [
+    "ZoteroHighlights"
+  ],
+  "theme": "obsidian",
+  "baseFontSizeAction": false,
+  "translucency": true,
+  "accentColor": ""
+}
