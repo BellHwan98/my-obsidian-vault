@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PTE 7대 유형 템플릿 암기 연습</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #161a22;
+    --panel-2: #1d222c;
+    --text: #e6e8ee;
+    --muted: #9aa3b2;
+    --accent: #4f8cff;
+    --accent-2: #6ee7b7;
+    --danger: #ff6b6b;
+    --warn: #f5c451;
+    --border: #2a313d;
+    --cat-we: #f5c451;
+    --cat-swt: #6ee7b7;
+    --cat-sst: #4f8cff;
+    --cat-di: #c084fc;
+    --cat-rl: #fb923c;
+    --cat-sgd: #f472b6;
+    --cat-rts: #34d399;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 24px 20px 80px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+  h1 { font-size: 20px; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .btn { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; font-size: 13px; cursor: pointer; transition: all .15s; }
+  .btn:hover { border-color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: white; font-weight: 600; }
+  .btn.primary:hover { filter: brightness(1.1); }
+  .btn.success { background: var(--accent-2); border-color: var(--accent-2); color: #06381f; font-weight: 600; }
+  .btn.danger { color: var(--danger); }
+  .btn.danger:hover { border-color: var(--danger); }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+
+  .progress-bar { height: 8px; background: var(--panel-2); border-radius: 999px; overflow: hidden; margin: 12px 0 4px; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); width: 0%; transition: width .25s; }
+  .progress-label { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+
+  .module-header { background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+  .module-header .cat-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .cat-badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; }
+  .cat-WE { background: rgba(245,196,81,0.15); color: var(--cat-we); }
+  .cat-SWT { background: rgba(110,231,183,0.15); color: var(--cat-swt); }
+  .cat-SST { background: rgba(79,140,255,0.15); color: var(--cat-sst); }
+  .cat-DI { background: rgba(192,132,252,0.15); color: var(--cat-di); }
+  .cat-RL { background: rgba(251,146,60,0.15); color: var(--cat-rl); }
+  .cat-SGD { background: rgba(244,114,182,0.15); color: var(--cat-sgd); }
+  .cat-RTS { background: rgba(52,211,153,0.15); color: var(--cat-rts); }
+  .mode-badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; background: var(--panel); border: 1px solid var(--border); color: var(--muted); }
+  .module-title { font-size: 18px; font-weight: 700; margin-top: 8px; }
+  .module-subtitle { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .module-fillers { margin-top: 10px; padding: 10px 12px; background: var(--panel); border: 1px dashed var(--border); border-radius: 8px; font-size: 13px; line-height: 1.7; }
+  .module-fillers .fk { color: var(--muted); }
+  .module-fillers .fv { color: var(--accent-2); font-weight: 600; }
+
+  .para-label { font-size: 13px; color: var(--warn); margin-bottom: 6px; font-weight: 600; }
+  .para-progress { font-size: 11px; color: var(--muted); margin-bottom: 6px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  textarea#text-input {
+    width: 100%; min-height: 150px; resize: vertical;
+    background: #0c0f15; color: var(--text);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; font-size: 15px; line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    outline: none;
+  }
+  textarea#text-input:focus { border-color: var(--accent); }
+  textarea#text-input.wrong { border-color: var(--danger); animation: shake .35s; }
+  textarea#text-input.correct { border-color: var(--accent-2); }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+  }
+
+  .feedback { margin-top: 10px; min-height: 22px; font-size: 13px; }
+  .feedback.correct { color: var(--accent-2); }
+  .feedback.wrong { color: var(--danger); }
+  .feedback.hint { color: var(--warn); }
+
+  .diff { margin-top: 10px; padding: 10px 12px; background: #0c0f15; border: 1px dashed var(--border); border-radius: 8px; font-size: 14px; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
+  .diff .miss { background: rgba(255,107,107,.22); color: #ffb4b4; padding: 0 2px; border-radius: 3px; }
+  .diff .extra { background: rgba(245,196,81,.20); color: #ffe39a; padding: 0 2px; border-radius: 3px; text-decoration: line-through; }
+  .diff .ok { color: var(--muted); }
+
+  .answer-reveal { margin-top: 12px; padding: 14px 16px; background: #0c0f15; border: 1px solid var(--accent-2); border-radius: 10px; font-size: 15px; line-height: 1.8; white-space: pre-wrap; }
+  .answer-reveal .label { font-size: 11px; color: var(--accent-2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+
+  .speak-instruction { padding: 16px; background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; line-height: 1.7; font-size: 14px; color: var(--muted); }
+
+  .controls { display: flex; justify-content: space-between; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .controls .left, .controls .right { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+  .summary-grid .cell { background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+  .summary-grid .k { font-size: 11px; color: var(--muted); }
+  .summary-grid .v { font-size: 20px; font-weight: 700; margin-top: 2px; }
+
+  .end-screen { text-align: center; padding: 30px 20px; }
+  .end-screen h2 { font-size: 28px; margin: 0 0 10px; }
+  .end-screen p { color: var(--muted); margin: 4px 0; }
+
+  details.stats { margin-top: 20px; background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+  details.stats summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+  .stats-grid { max-height: 320px; overflow: auto; margin-top: 10px; }
+  .stats-row { display: grid; grid-template-columns: 60px 1fr 60px; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; align-items: center; }
+  .stats-row .ct { text-align: right; color: var(--accent-2); }
+  .stats-row .ct.zero { color: var(--muted); }
+
+  .session-config { display: flex; align-items: center; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
+  .session-config label { font-size: 13px; color: var(--muted); }
+  .session-config input[type="number"] { width: 70px; background: var(--panel-2); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 6px 8px; font-size: 14px; }
+  .cat-filter { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0; }
+  .cat-filter button { background: var(--panel-2); border: 1px solid var(--border); color: var(--muted); border-radius: 999px; padding: 5px 12px; font-size: 12px; cursor: pointer; }
+  .cat-filter button.active { background: var(--accent); border-color: var(--accent); color: white; }
+
+  .hidden { display: none !important; }
+  kbd { background: var(--panel-2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; font-size: 11px; color: var(--muted); }
+  .footer-note { color: var(--muted); font-size: 12px; margin-top: 18px; text-align: center; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>PTE 7대 유형 템플릿 암기 연습</h1>
+      <div class="sub">WE·SWT·SST·DI·RL·SGD·RTS · 총 24개 모듈 · 완벽 일치 또는 셀프체크</div>
+    </div>
+    <div class="row">
+      <button class="btn" id="btn-reset" title="모든 연습 기록 초기화">기록 초기화</button>
+    </div>
+  </header>
+
+  <!-- START SCREEN -->
+  <section id="start-screen" class="card">
+    <div class="summary-grid" id="start-stats"></div>
+
+    <div class="session-config">
+      <label>한 세션 문제 수:</label>
+      <input type="number" id="cfg-size" value="6" min="1" max="24" />
+      <label>카테고리 필터:</label>
+    </div>
+    <div class="cat-filter" id="cat-filter"></div>
+
+    <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+      <button class="btn primary" id="btn-start">세션 시작</button>
+      <span class="sub" id="start-info"></span>
+    </div>
+
+    <p class="sub" style="margin-top:14px; line-height:1.7;">
+      <strong>WE / SWT / SST (타이핑):</strong> 모듈 정보와 변수값만 보이고 영어 본문을 처음부터 끝까지 정확히 입력해야 통과. WE는 단락 1~4를 순서대로 입력.<br />
+      <strong>DI / RL / SGD / RTS (말하기):</strong> 본인이 입으로 말한 뒤 "정답 보기" 로 확인 후 "맞음/틀림" 셀프체크.<br />
+      세션 안에서는 중복 없이 N개가 출제됩니다. 각 모듈 누적 연습 한도(기본 5회)에 도달하면 다음 사이클까지 출제 제외. 한도 미만 모듈이 N개 미만이면 한도가 자동으로 +5씩 상향.
+    </p>
+  </section>
+
+  <!-- PRACTICE SCREEN -->
+  <section id="practice-screen" class="card hidden">
+    <div class="progress-label">
+      <span id="progress-text">1 / N</span>
+      <span id="attempt-text" class="sub"></span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+    <div class="module-header" id="module-header"></div>
+
+    <!-- TEXT MODE -->
+    <div id="text-mode" class="hidden">
+      <div class="para-progress" id="para-progress"></div>
+      <div class="para-label" id="para-label"></div>
+      <textarea id="text-input" rows="6" placeholder="템플릿 본문을 외워서 정확히 입력하세요. Enter=제출, Shift+Enter=줄바꿈" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+      <div class="feedback" id="text-feedback"></div>
+      <div id="text-diff-box"></div>
+      <div class="controls">
+        <div class="left">
+          <button class="btn primary" id="btn-text-submit">제출 (Enter)</button>
+          <button class="btn" id="btn-text-hint">힌트</button>
+          <button class="btn" id="btn-text-reveal">정답 보기</button>
+        </div>
+        <div class="right">
+          <button class="btn danger" id="btn-quit-1">세션 종료</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPEAK MODE -->
+    <div id="speak-mode" class="hidden">
+      <div class="speak-instruction">
+        ① 이 모듈 템플릿을 머릿속에서 떠올려 <strong>입으로 소리내어</strong> 말해보세요.<br />
+        ② 다 말했으면 <strong>"정답 보기"</strong> 를 눌러 본문을 확인하세요.<br />
+        ③ 본인이 완벽히 말했으면 <strong>"맞음"</strong>, 한 군데라도 틀렸으면 <strong>"틀림"</strong> 을 누르세요. 틀림 시 같은 문제를 다시 도전합니다.
+      </div>
+      <div id="speak-answer-box"></div>
+      <div class="controls">
+        <div class="left" id="speak-controls"></div>
+        <div class="right">
+          <button class="btn danger" id="btn-quit-2">세션 종료</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- END SCREEN -->
+  <section id="end-screen" class="card hidden">
+    <div class="end-screen">
+      <h2 id="end-title">세션 완료</h2>
+      <p id="end-detail"></p>
+      <div style="margin-top:18px;">
+        <button class="btn primary" id="btn-again">다음 세션 시작</button>
+        <button class="btn" id="btn-home">처음으로</button>
+      </div>
+    </div>
+  </section>
+
+  <details class="stats">
+    <summary>모듈별 누적 연습 횟수 보기</summary>
+    <div class="stats-grid" id="stats-grid"></div>
+  </details>
+
+  <div class="footer-note">
+    데이터는 브라우저 localStorage 에 저장됩니다. 채점(타이핑)은 대소문자 무시·공백 정리·스마트따옴표 정규화 후 완전 일치.
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   ITEMS — PTE 7대 유형 24개 템플릿 (변수값은 사전에 고정)
+   ============================================================ */
+const ITEMS = [
+  // ==================== Write Essay (3) ====================
+  {
+    id: "we-a",
+    category: "WE",
+    title: "Write Essay — 모듈 A",
+    subtitle: "찬성/반대 및 장단점 논의형 (출제율 60%)",
+    when: 'Discuss both views / What are the advantages and disadvantages?',
+    fillers: {
+      "Topic": "online education",
+      "Argument 1 (장점)": "the flexibility it provides to learners",
+      "Supporting 1 (장점 예시)": "the ability to access lectures anytime and anywhere",
+      "Argument 2 (단점)": "the lack of direct interaction",
+      "Supporting 2 (단점 예시)": "isolation from peers and instructors",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "단락 1: 서론", text: "In contemporary society, the issue regarding online education has become a topic of frequent debate, drawing significant attention from both the public and experts alike. While some critics argue that it poses serious challenges to our communities, others firmly believe it offers remarkable benefits that cannot be ignored. The primary objective of this essay is to examine both perspectives in detail before reaching a reasonable and well-founded conclusion." },
+      { label: "단락 2: 본론 1 - 장점", text: "On the one hand, establishing why the flexibility it provides to learners is important is crucial to fully understanding the phenomenon. A clear example of this is the ability to access lectures anytime and anywhere, which directly influences various aspects of our modern society. Furthermore, recent academic literature has underscored that focusing on this specific element can yield highly positive outcomes. Therefore, the profound impact of this approach is undeniable." },
+      { label: "단락 3: 본론 2 - 단점", text: "Conversely, it is equally important to highlight the potential limitations, particularly regarding the lack of direct interaction. Critics frequently point out that emphasizing isolation from peers and instructors without proper regulations can lead to unforeseen and detrimental consequences. Despite the aforementioned advantages, we must take utmost care to address these underlying concerns." },
+      { label: "단락 4: 결론", text: "In conclusion, after reviewing the differing perspectives, it is overwhelmingly evident that tackling issues related to online education requires a highly balanced approach. Although the concerns surrounding the lack of direct interaction present valid challenges, the long-term benefits of the flexibility it provides to learners simply cannot be overlooked." },
+    ],
+  },
+  {
+    id: "we-b",
+    category: "WE",
+    title: "Write Essay — 모듈 B",
+    subtitle: "원인 파악 및 해결책 제시형 (출제율 25%)",
+    when: 'Causes and solutions',
+    fillers: {
+      "Topic (문제 현상)": "rising obesity rates",
+      "Cause 1": "the widespread consumption of processed foods",
+      "Cause 2": "the increasing prevalence of sedentary lifestyles",
+      "Solution 1": "promoting healthier food production",
+      "Solution 2": "physical education in schools",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "단락 1: 서론", text: "In recent years, the growing concern surrounding rising obesity rates has sparked a widespread discussion across the globe. This alarming trend not only affects individual lifestyles but also poses a substantial threat to the stability of our communities. The primary objective of this essay is to identify the underlying causes of this phenomenon and propose effective strategies to resolve it." },
+      { label: "단락 2: 본론 1 - 원인", text: "To begin with, determining the primary factors behind rising obesity rates is essential. A significant catalyst for this issue is the widespread consumption of processed foods, which has drastically altered the way society functions. Furthermore, academic studies frequently highlight that the increasing prevalence of sedentary lifestyles exacerbates the situation, creating a vicious cycle that is incredibly difficult to break without intervention." },
+      { label: "단락 3: 본론 2 - 해결책", text: "In order to effectively combat this challenge, proactive measures must be taken immediately. The most viable solution involves implementing strict policies focused on promoting healthier food production. In addition to this, raising public awareness regarding physical education in schools will empower individuals to make more responsible choices. Through collaborative efforts, the negative impacts can be significantly minimized." },
+      { label: "단락 4: 결론", text: "In conclusion, the complications associated with rising obesity rates are deeply rooted in multifaceted causes, demanding urgent attention. By strongly prioritizing promoting healthier food production and continuously fostering educational initiatives, society can undoubtedly navigate this crisis and ensure a more sustainable future for upcoming generations." },
+    ],
+  },
+  {
+    id: "we-c",
+    category: "WE",
+    title: "Write Essay — 모듈 C",
+    subtitle: "한쪽 의견 완전 동의/주장형 (출제율 15%)",
+    when: 'To what extent do you agree or disagree?',
+    fillers: {
+      "Topic": "renewable energy adoption",
+      "Standpoint (나의 주장)": "the global shift toward renewable energy",
+      "Reason 1": "environmental sustainability",
+      "Supporting 1": "clean energy infrastructure",
+      "Reason 2": "long-term economic stability",
+      "Supporting 2": "green technology investments",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "단락 1: 서론", text: "The debate surrounding renewable energy adoption has garnered considerable attention in contemporary discourse. While there are varying opinions on this matter, I strongly believe that the global shift toward renewable energy is the most accurate and beneficial perspective. This essay will outline the main justifications for my standpoint, supported by logical reasoning." },
+      { label: "단락 2: 본론 1 - 첫 번째 강력한 근거", text: "The foremost rationale for my view is intrinsically linked to the concept of environmental sustainability. To illustrate, fostering an environment that prioritizes clean energy infrastructure has consistently proven to generate remarkable societal advancements. Empirical evidence strongly underscores that adapting to such methodologies inevitably leads to higher levels of efficiency and overall satisfaction." },
+      { label: "단락 3: 본론 2 - 두 번째 추가 근거", text: "Another compelling factor that substantiates my position is the undeniably positive influence of long-term economic stability. It is a widely accepted notion that integrating green technology investments into our daily systems removes critical barriers to progress. Consequently, this robust approach prevents future complications while maximizing the inherent potential of the framework." },
+      { label: "단락 4: 결론", text: "In conclusion, the arguments presented above clearly demonstrate why I firmly support the idea that the global shift toward renewable energy is fundamentally correct. By acknowledging the critical importance of environmental sustainability and long-term economic stability, society can confidently move forward and reap the extensive benefits associated with this developmental trajectory." },
+    ],
+  },
+
+  // ==================== Summarize Written Text (4) ====================
+  {
+    id: "swt-1",
+    category: "SWT",
+    title: "Summarize Written Text — 모듈 1",
+    subtitle: "인과 관계 및 해결책 제시형 (Problem-Solution)",
+    when: '지문에 문제-해결 구조가 보일 때',
+    fillers: {
+      "Key Idea 1 (문제점)": "rising urban pollution",
+      "Key Idea 2 (방해 요소)": "outdated infrastructure",
+      "Key Idea 3 (해결책)": "sustainable transportation systems",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "한 문장 요약", text: "The provided text underscores the critical issue of rising urban pollution, and furthermore, despite the ongoing challenges associated with outdated infrastructure, it is highly evident that focusing on sustainable transportation systems will ultimately result in significant improvements." },
+    ],
+  },
+  {
+    id: "swt-2",
+    category: "SWT",
+    title: "Summarize Written Text — 모듈 2",
+    subtitle: "대조 및 부연 설명형 (A vs B)",
+    when: '지문이 두 측면을 비교할 때',
+    fillers: {
+      "Key Idea 1 (긍정 A)": "technological advancement",
+      "Key Idea 2 (부정 B)": "growing digital inequality",
+      "Key Idea 3 (결론)": "inclusive innovation",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "한 문장 요약", text: "Although addressing technological advancement plays a crucial role in shaping our modern society, the passage explicitly highlights that growing digital inequality remains a critical concern, which inevitably necessitates a more comprehensive approach toward successfully managing inclusive innovation." },
+    ],
+  },
+  {
+    id: "swt-3",
+    category: "SWT",
+    title: "Summarize Written Text — 모듈 3",
+    subtitle: "시간적 흐름 및 진화형 (Past → Present)",
+    when: '과거에서 현재로의 변화를 설명할 때',
+    fillers: {
+      "Key Idea 1 (과거)": "early printing methods",
+      "Key Idea 2 (현재)": "modern digital publishing",
+      "Key Idea 3 (시사점)": "global knowledge dissemination",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "한 문장 요약", text: "Tracing the remarkable evolution of early printing methods, the author highlights how the rapid development of modern digital publishing has fundamentally transformed the landscape, thereby paving the way for unprecedented innovations in global knowledge dissemination." },
+    ],
+  },
+  {
+    id: "swt-4",
+    category: "SWT",
+    title: "Summarize Written Text — 모듈 4",
+    subtitle: "학술적 정의 및 시사점 강조형",
+    when: '지문이 특정 개념을 정의/설명할 때',
+    fillers: {
+      "Key Idea 1 (핵심 개념)": "artificial intelligence",
+      "Key Idea 2 (세부 속성)": "machine learning algorithms",
+      "Key Idea 3 (적용 분야)": "various scientific disciplines",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "한 문장 요약", text: "By providing a comprehensive definition of artificial intelligence, the literature reveals that an in-depth understanding of machine learning algorithms is absolutely paramount, which subsequently contributes to redefining the boundaries of various scientific disciplines." },
+    ],
+  },
+
+  // ==================== Summarize Spoken Text (3) ====================
+  {
+    id: "sst-a",
+    category: "SST",
+    title: "Summarize Spoken Text — 모듈 A",
+    subtitle: "일반 개념 설명형 (가장 무난)",
+    when: '강의가 개념을 설명할 때',
+    fillers: {
+      "Keyword 1": "climate change",
+      "Keyword 2": "renewable energy",
+      "Keyword 3": "fossil fuel use",
+      "Keyword 4": "sustainable policy",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "요약 단락", text: "The speaker primarily discussed the significant impact of climate change. He then explicitly highlighted that renewable energy plays a crucial role in this process. Furthermore, the lecture underscored the underlying limitations of fossil fuel use. In conclusion, it is highly evident that sustainable policy must be prioritized." },
+    ],
+  },
+  {
+    id: "sst-b",
+    category: "SST",
+    title: "Summarize Spoken Text — 모듈 B",
+    subtitle: "연구/실험 결과 발표형",
+    when: 'Research / Study / Experiment 가 언급될 때',
+    fillers: {
+      "Keyword 1 (실험 주제)": "memory retention",
+      "Keyword 2 (발견)": "spaced repetition",
+      "Keyword 3 (원인/결과)": "long-term learning",
+      "Keyword 4 (시사점)": "cognitive development",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "요약 단락", text: "The speaker presented a fascinating study regarding memory retention. According to the findings, he explicitly highlighted that spaced repetition directly influences the overall outcome. Furthermore, the research data extensively underscored the correlation between these factors and long-term learning. Ultimately, this proves that cognitive development requires further academic exploration." },
+    ],
+  },
+  {
+    id: "sst-c",
+    category: "SST",
+    title: "Summarize Spoken Text — 모듈 C",
+    subtitle: "역사적 흐름/발전 과정형",
+    when: '과거 사건이나 인물 일대기',
+    fillers: {
+      "Keyword 1 (사건/인물)": "the Industrial Revolution",
+      "Keyword 2 (시작점)": "manual labor and craftsmanship",
+      "Keyword 3 (발전 단계)": "mechanized production",
+      "Keyword 4 (현재 의의)": "modern industrial society",
+    },
+    mode: "type",
+    paragraphs: [
+      { label: "요약 단락", text: "The lecture provided a detailed historical panorama of the Industrial Revolution. Initially, the speaker traced its origins back to manual labor and craftsmanship. Over the years, however, remarkable developments introduced mechanized production. In conclusion, the evolutionary journey of this subject perfectly illustrates the sheer magnitude of modern industrial society." },
+    ],
+  },
+
+  // ==================== Describe Image (3) ==================== speaking
+  {
+    id: "di-1",
+    category: "DI",
+    title: "Describe Image — 모듈 1",
+    subtitle: "수치 비교형 (Bar/Column Chart)",
+    when: 'Highest / Lowest 강조',
+    fillers: {
+      "Title": "annual energy consumption",
+      "항목 A (최고값)": "China",
+      "항목 B (최저값)": "Brazil",
+      "항목 C": "the United States",
+      "항목 D": "Germany",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "The provided image illustrates interesting information about annual energy consumption.\nAt first glance, it is highly evident that the highest value is represented by China, while the lowest figure can be clearly seen in Brazil.\nFurthermore, a closer look reveals a striking contrast when comparing the United States with Germany.\nIn conclusion, the visual data successfully highlights the overall distribution of annual energy consumption." },
+    ],
+  },
+  {
+    id: "di-2",
+    category: "DI",
+    title: "Describe Image — 모듈 2",
+    subtitle: "트렌드 및 변화형 (Line Graph)",
+    when: '시간에 따른 흐름 강조',
+    fillers: {
+      "Title": "global average temperature",
+      "시작 연도": "1950",
+      "최고점 연도": "2020",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "The line graph visually tracks the dynamic changes regarding global average temperature over a specific period.\nInitially, the trend began at a particular point represented by 1950, and then it experienced noticeable fluctuations.\nAs time progressed, it reached its absolute peak around 2020, demonstrating a significant upward trajectory.\nOverall, the graph effectively captures the steady evolution of global average temperature." },
+    ],
+  },
+  {
+    id: "di-3",
+    category: "DI",
+    title: "Describe Image — 모듈 3",
+    subtitle: "구조 및 과정형 (Process/Map/Picture)",
+    when: '순서나 배치 강조',
+    fillers: {
+      "Title": "the water cycle",
+      "첫 번째 요소": "evaporation from the oceans",
+      "두 번째 요소": "condensation in the atmosphere",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "The provided image illustrates a fascinating structural layout regarding the water cycle.\nIn the initial stage, the most prominent feature is undeniably evaporation from the oceans, which sets the foundation for the entire system.\nSubsequently, this directly leads to the formation of condensation in the atmosphere, functioning as a critical bridge.\nUltimately, the visual information seamlessly demonstrates the interconnected mechanism of the water cycle." },
+    ],
+  },
+
+  // ==================== Re-tell Lecture (2) ==================== speaking
+  {
+    id: "rl-a",
+    category: "RL",
+    title: "Re-tell Lecture — 모듈 A",
+    subtitle: "일반적인 정보 나열형",
+    when: '사실 전달 위주의 강의',
+    fillers: {
+      "강의 주제": "ocean ecosystems",
+      "노트 1": "marine biodiversity",
+      "노트 2": "coral reefs are declining rapidly",
+      "노트 3": "human activities",
+      "노트 4": "ecological balance",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "The lecture provided a comprehensive overview of ocean ecosystems.\nFirstly, the speaker shed light on the crucial aspect of marine biodiversity.\nFollowing this introductory point, he drew our absolute attention to the fact that coral reefs are declining rapidly.\nFurthermore, an incredibly interesting observation was made regarding human activities.\nIn conclusion, the presentation effectively summarized the vast implications of ecological balance." },
+    ],
+  },
+  {
+    id: "rl-b",
+    category: "RL",
+    title: "Re-tell Lecture — 모듈 B",
+    subtitle: "문제 제기 및 해결책 논리형",
+    when: 'Problem & Solution 구조의 강의',
+    fillers: {
+      "강의 주제/문제점": "deforestation",
+      "노트 1 (원인/현상)": "illegal logging",
+      "노트 2 (해결책)": "stricter regulations",
+      "노트 3 (추가 조치)": "reforestation programs",
+      "노트 4 (결론)": "environmental protection",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "The main focus of this lecture revolved around the critical challenge of deforestation.\nTo begin with, the speaker outlined how significantly illegal logging negatively impacts the current environment.\nIn order to combat this pressing issue, he strongly proposed implementing stricter regulations.\nMoreover, he emphasized that taking a proactive stance on reforestation programs is unavoidable.\nUltimately, the lecture served as a stark reminder of the urgent need for environmental protection." },
+    ],
+  },
+
+  // ==================== Summarize Group Discussion (3) ==================== speaking
+  {
+    id: "sgd-a",
+    category: "SGD",
+    title: "Summarize Group Discussion — 모듈 A",
+    subtitle: "의견 대립형 (찬성 vs 반대) · 출제율 최다",
+    when: '3명이 서로 다른 의견을 낼 때',
+    fillers: {
+      "Topic": "remote work policies",
+      "Speaker 1 (주장)": "flexible work hours",
+      "Speaker 2 (부연)": "productivity in home settings",
+      "Speaker 3 (반대)": "the loss of team collaboration",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "The group engaged in a highly stimulating debate concerning remote work policies. The first speaker firmly argued for the necessity of flexible work hours. While the second speaker partially agreed, adding insights about productivity in home settings, the third speaker introduced a sharply contrasting perspective, disputing the previous points by emphasizing the loss of team collaboration. Overall, the conversation beautifully showcased the diverse complexities of the issue." },
+    ],
+  },
+  {
+    id: "sgd-b",
+    category: "SGD",
+    title: "Summarize Group Discussion — 모듈 B",
+    subtitle: "아이디어 발전 및 동의형",
+    when: '모두 동의하며 살을 붙일 때',
+    fillers: {
+      "Topic": "campus sustainability",
+      "Speaker 1 (제안)": "reducing plastic waste",
+      "Speaker 2 (추가)": "energy-efficient buildings",
+      "Speaker 3 (결론)": "community recycling initiatives",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "The primary agenda of the group discussion centered around campus sustainability. Initially, one participant laid the groundwork by suggesting reducing plastic waste. Building upon this exact premise, the second student enthusiastically supported the idea, pointing out energy-efficient buildings. Finally, the third speaker synthesized these thoughts to formulate a comprehensive strategy regarding community recycling initiatives. Ultimately, they reached a highly constructive consensus." },
+    ],
+  },
+  {
+    id: "sgd-c",
+    category: "SGD",
+    title: "Summarize Group Discussion — 모듈 C",
+    subtitle: "문제 해결 및 절충형 (Brainstorming & Compromise)",
+    when: '서로 아이디어 내다 타협할 때',
+    fillers: {
+      "Topic": "exam policies",
+      "Speaker 1 (제안)": "implementing open-book tests",
+      "Speaker 2 (우려)": "potential issues of academic dishonesty",
+      "Speaker 3 (절충안)": "a hybrid model combining oral and written components",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "The group discussed how to tackle exam policies. While the first speaker suggested implementing open-book tests, the second speaker raised a valid concern about potential issues of academic dishonesty. Ultimately, the third speaker proposed a middle ground by suggesting a hybrid model combining oral and written components, leading the group to a practical compromise." },
+    ],
+  },
+
+  // ==================== Respond to a Situation (6) ==================== speaking
+  {
+    id: "rts-1",
+    category: "RTS",
+    title: "Respond to a Situation — 상황 1",
+    subtitle: "포멀 · 윗사람에게 사과 및 대안 제시",
+    when: '지각, 기한 연장 요청 등',
+    fillers: {
+      "수신자": "Professor Smith",
+      "Problem": "my final essay",
+      "Solution": "get a one-day extension",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "Hi Professor Smith, I am incredibly sorry to bother you, but I'm facing an unexpected emergency regarding my final essay. I fully understand how disruptive this is, and I take complete responsibility. Would it be at all possible to get a one-day extension? I promise to make it my top priority. Thank you so much for your understanding." },
+    ],
+  },
+  {
+    id: "rts-2",
+    category: "RTS",
+    title: "Respond to a Situation — 상황 2",
+    subtitle: "포멀 · 고객센터/집주인 정중한 컴플레인",
+    when: '서비스 문제 신고',
+    fillers: {
+      "Problem": "the heating system",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "Hello, I'm calling to report an urgent issue with the heating system. I was under the impression this would have been resolved by now, and it's causing me a significant amount of inconvenience. Could you please send someone to look into this immediately? I would really appreciate a prompt update on how we can fix this." },
+    ],
+  },
+  {
+    id: "rts-3",
+    category: "RTS",
+    title: "Respond to a Situation — 상황 3",
+    subtitle: "인포멀 · 친구에게 조언/도움 요청",
+    when: '동료/친구에게 부탁',
+    fillers: {
+      "Friend's name": "Jamie",
+      "Problem": "this software",
+      "Solution (요청 내용)": "how to start",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "Hey Jamie, do you have a quick sec? I'm honestly pulling my hair out trying to figure out this software. Since you're practically an expert at this, do you think you could spare a few minutes to give me a hand or share some advice on how to start? I'd owe you big time—lunch is definitely on me!" },
+    ],
+  },
+  {
+    id: "rts-4",
+    category: "RTS",
+    title: "Respond to a Situation — 상황 4",
+    subtitle: "인포멀 · 친구 제안 거절",
+    when: '초대를 어쩔 수 없이 거절',
+    fillers: {
+      "Friend's name": "Jamie",
+      "Event": "the party",
+      "Reason": "my final exams",
+      "Alternative": "next weekend",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "Hey Jamie, thanks so much for the invite! I'd absolutely love to join you for the party, but I'm completely swamped right now with my final exams. I'm so bummed I have to miss it. Let's definitely catch up next weekend though, okay? Have an amazing time!" },
+    ],
+  },
+  {
+    id: "rts-5",
+    category: "RTS",
+    title: "Respond to a Situation — 상황 5",
+    subtitle: "인포멀 · 친구에게 조언/추천",
+    when: '친구 고민 상담해줄 때',
+    fillers: {
+      "Friend's name": "Jamie",
+      "Problem (친구의 고민)": "your project deadline",
+      "Advice": "breaking it into smaller tasks",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "Hey Jamie, I heard you're struggling with your project deadline. If I were in your shoes, I would definitely try breaking it into smaller tasks. It worked wonders for me when I had a similar issue. Let me know if you need any help with this, I'm always here for you!" },
+    ],
+  },
+  {
+    id: "rts-6",
+    category: "RTS",
+    title: "Respond to a Situation — 상황 6",
+    subtitle: "정보 문의 및 일정 변경 (Inquiry)",
+    when: '예약 변경/단순 문의',
+    fillers: {
+      "Topic": "my reservation",
+      "Original plan": "a table for two at 7 PM",
+      "New plan": "a table for four at 8 PM",
+    },
+    mode: "speak",
+    paragraphs: [
+      { label: "전체 답안", text: "Hello, I'm calling to inquire about my reservation. I originally booked a table for two at 7 PM, but I was wondering if it's possible to change it to a table for four at 8 PM? Could you please let me know if this is doable and what my options are? Thank you." },
+    ],
+  },
+];
+
+const TOTAL = ITEMS.length;
+const LIMIT_STEP = 5;
+const STORAGE_KEY = "pte-templates-v1";
+const CATEGORIES = ["WE","SWT","SST","DI","RL","SGD","RTS"];
+
+/* ========== storage ========== */
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const s = JSON.parse(raw);
+      if (s.counts && typeof s.counts === "object") {
+        const counts = {};
+        for (const it of ITEMS) counts[it.id] = s.counts[it.id] || 0;
+        return {
+          counts,
+          limit: s.limit || LIMIT_STEP,
+          sessionsCompleted: s.sessionsCompleted || 0,
+          activeCats: Array.isArray(s.activeCats) ? s.activeCats : CATEGORIES.slice(),
+          sessionSize: s.sessionSize || 6,
+        };
+      }
+    }
+  } catch (e) {}
+  const counts = {};
+  for (const it of ITEMS) counts[it.id] = 0;
+  return { counts, limit: LIMIT_STEP, sessionsCompleted: 0, activeCats: CATEGORIES.slice(), sessionSize: 6 };
+}
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+let state = loadState();
+
+/* ========== sampling ========== */
+function shuffleInPlace(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function pickSession(size) {
+  let safety = 0;
+  while (safety++ < 50) {
+    const eligible = ITEMS.filter(it => state.activeCats.includes(it.category) && state.counts[it.id] < state.limit);
+    if (eligible.length >= size) {
+      shuffleInPlace(eligible);
+      return eligible.slice(0, size).map(it => it.id);
+    }
+    // bump limit
+    const totalInCats = ITEMS.filter(it => state.activeCats.includes(it.category)).length;
+    if (totalInCats < size) return null; // can't fill session at all
+    state.limit += LIMIT_STEP;
+    saveState();
+  }
+  return null;
+}
+
+/* ========== normalize / compare ========== */
+function normalize(s) {
+  return s
+    .replace(/[‘’ʼ′]/g, "'")
+    .replace(/[“”″]/g, '"')
+    .replace(/[–—]/g, "-")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+function isMatch(input, target) { return normalize(input) === normalize(target); }
+
+/* ========== diff (word-level LCS) ========== */
+function diffWords(userStr, targetStr) {
+  const u = userStr.split(/\s+/).filter(x => x.length);
+  const t = targetStr.split(/\s+/).filter(x => x.length);
+  const dp = Array.from({length: u.length + 1}, () => new Array(t.length + 1).fill(0));
+  for (let i = 1; i <= u.length; i++) {
+    for (let j = 1; j <= t.length; j++) {
+      const eq = normalize(u[i-1]) === normalize(t[j-1]);
+      dp[i][j] = eq ? dp[i-1][j-1] + 1 : Math.max(dp[i-1][j], dp[i][j-1]);
+    }
+  }
+  const ops = [];
+  let i = u.length, j = t.length;
+  while (i > 0 && j > 0) {
+    const eq = normalize(u[i-1]) === normalize(t[j-1]);
+    if (eq) { ops.unshift({op:"ok",val:t[j-1]}); i--; j--; }
+    else if (dp[i-1][j] >= dp[i][j-1]) { ops.unshift({op:"extra",val:u[i-1]}); i--; }
+    else { ops.unshift({op:"miss",val:t[j-1]}); j--; }
+  }
+  while (i > 0) { ops.unshift({op:"extra",val:u[i-1]}); i--; }
+  while (j > 0) { ops.unshift({op:"miss",val:t[j-1]}); j--; }
+  return ops;
+}
+function esc(s) { return s.replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"})[ch]); }
+function renderDiff(userStr, targetStr) {
+  const ops = diffWords(userStr, targetStr);
+  return ops.map(o => {
+    const safe = esc(o.val);
+    if (o.op === "ok") return `<span class="ok">${safe}</span>`;
+    if (o.op === "miss") return `<span class="miss">${safe}</span>`;
+    return `<span class="extra">${safe}</span>`;
+  }).join(" ");
+}
+
+/* ========== UI ========== */
+const $ = id => document.getElementById(id);
+const startScreen = $("start-screen");
+const practiceScreen = $("practice-screen");
+const endScreen = $("end-screen");
+
+let session = {
+  ids: [],
+  pos: 0,         // index into session.ids
+  paraIdx: 0,     // current paragraph within current item (type mode)
+  textAttempts: 0,
+  hintLevel: 0,
+  speakRevealed: false,
+  correctCount: 0,
+  wrongCount: 0,
+};
+
+function getItem(id) { return ITEMS.find(it => it.id === id); }
+function currentItem() { return getItem(session.ids[session.pos]); }
+
+function renderStartStats() {
+  const total = TOTAL;
+  const done = ITEMS.filter(it => state.counts[it.id] > 0).length;
+  const mastered = ITEMS.filter(it => state.counts[it.id] >= state.limit).length;
+  const totalPractices = Object.values(state.counts).reduce((a,b)=>a+b,0);
+  $("start-stats").innerHTML = `
+    <div class="cell"><div class="k">전체 모듈</div><div class="v">${total}</div></div>
+    <div class="cell"><div class="k">최소 1회 연습</div><div class="v">${done}</div></div>
+    <div class="cell"><div class="k">현재 한도 도달</div><div class="v">${mastered}</div></div>
+    <div class="cell"><div class="k">현재 한도</div><div class="v">${state.limit}회</div></div>
+    <div class="cell"><div class="k">누적 연습</div><div class="v">${totalPractices}</div></div>
+    <div class="cell"><div class="k">완료 세션</div><div class="v">${state.sessionsCompleted}</div></div>
+  `;
+  const inCats = ITEMS.filter(it => state.activeCats.includes(it.category));
+  const eligible = inCats.filter(it => state.counts[it.id] < state.limit).length;
+  $("start-info").textContent = `선택된 카테고리 모듈: ${inCats.length} · 한도 미만: ${eligible}${eligible < state.sessionSize ? " — 시작 시 한도 자동 상향" : ""}`;
+}
+
+function renderCatFilter() {
+  const counts = {};
+  for (const it of ITEMS) counts[it.category] = (counts[it.category]||0) + 1;
+  $("cat-filter").innerHTML = ["전체", ...CATEGORIES].map(c => {
+    if (c === "전체") {
+      const active = state.activeCats.length === CATEGORIES.length;
+      return `<button data-cat="__all__" class="${active?"active":""}">전체</button>`;
+    }
+    const active = state.activeCats.includes(c);
+    return `<button data-cat="${c}" class="${active?"active":""}">${c} (${counts[c]||0})</button>`;
+  }).join("");
+  $("cat-filter").querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const c = btn.dataset.cat;
+      if (c === "__all__") {
+        state.activeCats = state.activeCats.length === CATEGORIES.length ? [] : CATEGORIES.slice();
+      } else {
+        if (state.activeCats.includes(c)) state.activeCats = state.activeCats.filter(x => x !== c);
+        else state.activeCats = [...state.activeCats, c];
+      }
+      saveState();
+      renderCatFilter();
+      renderStartStats();
+    });
+  });
+}
+
+function renderStatsTable() {
+  const rows = ITEMS.map(it => {
+    const c = state.counts[it.id];
+    return `<div class="stats-row"><span class="cat-badge cat-${it.category}">${it.category}</span><span>${esc(it.title.replace(/^.*— /,""))}</span><span class="ct ${c===0?"zero":""}">${c}</span></div>`;
+  });
+  $("stats-grid").innerHTML = rows.join("");
+}
+
+function showScreen(name) {
+  startScreen.classList.toggle("hidden", name !== "start");
+  practiceScreen.classList.toggle("hidden", name !== "practice");
+  endScreen.classList.toggle("hidden", name !== "end");
+}
+
+function renderModuleHeader(it) {
+  const fillerRows = Object.entries(it.fillers).map(([k,v]) =>
+    `<div><span class="fk">[${esc(k)}]</span> → <span class="fv">${esc(v)}</span></div>`
+  ).join("");
+  $("module-header").innerHTML = `
+    <div class="cat-row">
+      <span class="cat-badge cat-${it.category}">${it.category}</span>
+      <span class="mode-badge">${it.mode === "type" ? "✍️ 타이핑" : "🗣️ 말하기 + 셀프체크"}</span>
+      <span class="sub">${esc(it.when)}</span>
+    </div>
+    <div class="module-title">${esc(it.title)}</div>
+    <div class="module-subtitle">${esc(it.subtitle)}</div>
+    <div class="module-fillers">
+      <div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">이 모듈의 변수값 (외워서 입력/말할 때 사용)</div>
+      ${fillerRows}
+    </div>
+  `;
+}
+
+function startSession() {
+  const size = Math.max(1, Math.min(TOTAL, parseInt($("cfg-size").value, 10) || 6));
+  state.sessionSize = size;
+  if (state.activeCats.length === 0) {
+    alert("최소 한 개 이상의 카테고리를 선택하세요.");
+    return;
+  }
+  const ids = pickSession(size);
+  if (!ids) {
+    alert("선택한 카테고리의 모듈 수가 세션 크기보다 적습니다. 세션 크기를 줄이거나 카테고리를 추가하세요.");
+    return;
+  }
+  session = { ids, pos: 0, paraIdx: 0, textAttempts: 0, hintLevel: 0, speakRevealed: false, correctCount: 0, wrongCount: 0 };
+  for (const id of ids) state.counts[id] += 1;
+  saveState();
+  showScreen("practice");
+  loadCurrent();
+}
+
+function loadCurrent() {
+  const it = currentItem();
+  session.paraIdx = 0;
+  session.textAttempts = 0;
+  session.hintLevel = 0;
+  session.speakRevealed = false;
+  renderModuleHeader(it);
+  $("progress-text").textContent = `${session.pos + 1} / ${session.ids.length}`;
+  $("attempt-text").textContent = `누적 ${state.counts[it.id]}회 연습`;
+  $("progress-fill").style.width = `${(session.pos / session.ids.length) * 100}%`;
+  if (it.mode === "type") {
+    $("text-mode").classList.remove("hidden");
+    $("speak-mode").classList.add("hidden");
+    loadParagraph();
+  } else {
+    $("speak-mode").classList.remove("hidden");
+    $("text-mode").classList.add("hidden");
+    loadSpeak();
+  }
+}
+
+function loadParagraph() {
+  const it = currentItem();
+  const p = it.paragraphs[session.paraIdx];
+  $("para-progress").textContent = `단락 ${session.paraIdx + 1} / ${it.paragraphs.length}`;
+  $("para-label").textContent = `[${p.label}]`;
+  $("text-input").value = "";
+  $("text-input").classList.remove("wrong","correct");
+  $("text-feedback").textContent = "";
+  $("text-feedback").className = "feedback";
+  $("text-diff-box").innerHTML = "";
+  session.textAttempts = 0;
+  session.hintLevel = 0;
+  setTimeout(() => $("text-input").focus(), 30);
+}
+
+function handleTextSubmit() {
+  const it = currentItem();
+  const p = it.paragraphs[session.paraIdx];
+  const user = $("text-input").value;
+  if (!user.trim()) return;
+  session.textAttempts += 1;
+  if (isMatch(user, p.text)) {
+    $("text-input").classList.remove("wrong");
+    $("text-input").classList.add("correct");
+    $("text-feedback").textContent = `정답! (${session.textAttempts}회 시도)`;
+    $("text-feedback").className = "feedback correct";
+    $("text-diff-box").innerHTML = "";
+    setTimeout(() => {
+      if (session.paraIdx + 1 < it.paragraphs.length) {
+        session.paraIdx += 1;
+        loadParagraph();
+      } else {
+        session.correctCount += 1;
+        advance();
+      }
+    }, 500);
+  } else {
+    $("text-input").classList.remove("correct");
+    $("text-input").classList.add("wrong");
+    $("text-feedback").textContent = `오답입니다. 다시 시도하세요. (${session.textAttempts}회 시도)`;
+    $("text-feedback").className = "feedback wrong";
+    $("text-diff-box").innerHTML = `<div class="diff">${renderDiff(user, p.text)}</div>`;
+    setTimeout(() => $("text-input").classList.remove("wrong"), 400);
+  }
+}
+
+function showTextHint() {
+  const it = currentItem();
+  const p = it.paragraphs[session.paraIdx];
+  session.hintLevel = Math.min(session.hintLevel + 1, 10);
+  const words = p.text.split(/\s+/);
+  const showN = Math.min(words.length, session.hintLevel * 3);
+  const hint = words.slice(0, showN).join(" ") + (showN < words.length ? " ..." : "");
+  $("text-feedback").innerHTML = `힌트: <strong>${esc(hint)}</strong> (전체 ${words.length}단어)`;
+  $("text-feedback").className = "feedback hint";
+}
+
+function revealTextAnswer() {
+  const it = currentItem();
+  const p = it.paragraphs[session.paraIdx];
+  $("text-feedback").innerHTML = `<strong>정답:</strong>`;
+  $("text-feedback").className = "feedback hint";
+  $("text-diff-box").innerHTML = `<div class="answer-reveal"><div class="label">정답 본문</div>${esc(p.text)}</div>`;
+}
+
+function loadSpeak() {
+  const it = currentItem();
+  session.speakRevealed = false;
+  $("speak-answer-box").innerHTML = "";
+  $("speak-controls").innerHTML = `
+    <button class="btn primary" id="btn-speak-reveal">정답 보기</button>
+  `;
+  $("btn-speak-reveal").addEventListener("click", revealSpeak);
+}
+
+function revealSpeak() {
+  const it = currentItem();
+  if (session.speakRevealed) return;
+  session.speakRevealed = true;
+  const parts = it.paragraphs.map(p => `<div class="answer-reveal"><div class="label">${esc(p.label)}</div>${esc(p.text)}</div>`).join("");
+  $("speak-answer-box").innerHTML = parts;
+  $("speak-controls").innerHTML = `
+    <button class="btn success" id="btn-speak-correct">맞음 (다음 문제)</button>
+    <button class="btn danger" id="btn-speak-wrong">틀림 (다시)</button>
+  `;
+  $("btn-speak-correct").addEventListener("click", () => { session.correctCount += 1; advance(); });
+  $("btn-speak-wrong").addEventListener("click", () => { session.wrongCount += 1; loadSpeak(); });
+}
+
+function advance() {
+  session.pos += 1;
+  if (session.pos >= session.ids.length) finishSession();
+  else loadCurrent();
+}
+
+function finishSession() {
+  state.sessionsCompleted += 1;
+  saveState();
+  const total = session.ids.length;
+  const okCount = session.correctCount;
+  const ngCount = session.wrongCount;
+  $("end-title").textContent = "세션 완료 🎉";
+  $("end-detail").innerHTML = `
+    총 ${total}개 문제 / 정답 처리 ${okCount}개${ngCount>0?` · 셀프 오답 ${ngCount}회 (재시도 후 통과)`:""}<br />
+    누적 완료 세션: ${state.sessionsCompleted}
+  `;
+  showScreen("end");
+  renderStartStats();
+  renderStatsTable();
+}
+
+function quitSession() {
+  if (confirm("세션을 종료하시겠어요? 현재 세션의 누적 횟수는 이미 반영되어 있습니다.")) {
+    showScreen("start");
+    renderStartStats();
+    renderStatsTable();
+  }
+}
+
+function resetAll() {
+  if (!confirm("모든 연습 기록(횟수·세션수·한도)을 초기화합니다. 진행하시겠어요?")) return;
+  const counts = {};
+  for (const it of ITEMS) counts[it.id] = 0;
+  state = { counts, limit: LIMIT_STEP, sessionsCompleted: 0, activeCats: CATEGORIES.slice(), sessionSize: state.sessionSize || 6 };
+  saveState();
+  renderStartStats();
+  renderCatFilter();
+  renderStatsTable();
+}
+
+/* ========== events ========== */
+$("btn-start").addEventListener("click", startSession);
+$("btn-again").addEventListener("click", startSession);
+$("btn-home").addEventListener("click", () => { showScreen("start"); renderStartStats(); renderStatsTable(); });
+$("btn-text-submit").addEventListener("click", handleTextSubmit);
+$("btn-text-hint").addEventListener("click", showTextHint);
+$("btn-text-reveal").addEventListener("click", revealTextAnswer);
+$("btn-quit-1").addEventListener("click", quitSession);
+$("btn-quit-2").addEventListener("click", quitSession);
+$("btn-reset").addEventListener("click", resetAll);
+
+$("text-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleTextSubmit(); }
+});
+
+$("cfg-size").addEventListener("change", () => {
+  state.sessionSize = parseInt($("cfg-size").value, 10) || 6;
+  saveState();
+  renderStartStats();
+});
+
+/* init */
+$("cfg-size").value = state.sessionSize;
+renderCatFilter();
+renderStartStats();
+renderStatsTable();
+showScreen("start");
+</script>
+</body>
+</html>
